@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+</head>
+<body>
+    <h1>Поиск</h1>
+    <form action="/Employee/Search">
+        Поиск:
+        <input type="text" name="name" value="0">
+        <input type="submit" value="Поиск">
+        <div th:each="pro : ${search}">
+            <p th:text="${pro.surname}"></p>
+        </div>
+    </form>
+
+</form>
+</body>
+</html>

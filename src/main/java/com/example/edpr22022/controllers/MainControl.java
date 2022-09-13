@@ -6,12 +6,10 @@ import com.example.edpr22022.repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import com.example.edpr22022.repo.EmployeeRepo;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 
 @Controller
@@ -30,13 +28,13 @@ public class MainControl {
     {
         return "Home";
     }
+
     @GetMapping("/Employee")
     public String Employee(Model model) {
         Iterable<Employee> employee = employeeRepo.findAll();
         model.addAttribute("employee",employee);
         return "Employee";
     }
-
     @GetMapping("/Employee/add")
     public String EmployeeAdd(Employee employee, Model model) {return "EmployeeAdd";}
 
@@ -46,15 +44,23 @@ public class MainControl {
         employeeRepo.save(employee);
         return "Employee";
     }
-
     @GetMapping("/Employee/{id}")
-    public String EmployeeDetails(
-
-            @PathVariable(value="id") long id, Model model)
+    public String EmployeeDetails(@PathVariable(value="id") long id, Model model)
     {
-        Employee pcs = employeeRepo.findById(id);
-        model.addAttribute("employee", pcs);
+        Employee emp = employeeRepo.findById(id);
+        model.addAttribute("employee", emp);
         return "EmployeeShow";
+    }
+
+    @GetMapping("/Search")
+    public String EmployeeSearch(Model model) {return "EmployeeSearch";}
+
+    @PostMapping("/Employee/Search")
+    public String EmployeeResult (@RequestParam String name, Model model)
+    {
+        List<Employee> search = employeeRepo.findByNameContains(name);
+        model.addAttribute("search", search);
+        return "EmployeeSearch";
     }
 
     @GetMapping("/Customer")
@@ -75,12 +81,10 @@ public class MainControl {
     }
 
     @GetMapping("/Customer/{id}")
-    public String CustomerDetails(
-
-            @PathVariable(value="id") long id, Model model)
+    public String CustomerDetails(@PathVariable(value="id") long id, Model model)
     {
-        Customer pcs = customerRepo.findById(id);
-        model.addAttribute("customer", pcs);
+        Customer customer = customerRepo.findById(id);
+        model.addAttribute("customer", customer);
         return "CustomerShow";
     }
 }
