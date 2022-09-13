@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface EmployeeRepo extends CrudRepository<Employee,Long> {
     List<Employee> findByNameContains(String name);// поиск по символам и содержимому
+    List<Employee> findByName(String name);
     Employee findById(long id);
     Employee deleteById(long id);
 }

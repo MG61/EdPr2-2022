@@ -52,13 +52,13 @@ public class MainControl {
         return "EmployeeShow";
     }
 
-    @GetMapping("/Search")
+    @GetMapping("/Searchemp")
     public String EmployeeSearch(Model model) {return "EmployeeSearch";}
 
     @PostMapping("/Employee/Search")
     public String EmployeeResult (@RequestParam String name, Model model)
     {
-        List<Employee> search = employeeRepo.findByNameContains(name);
+        List<Employee> search = employeeRepo.findByName(name);
         model.addAttribute("search", search);
         return "EmployeeSearch";
     }
@@ -86,5 +86,16 @@ public class MainControl {
         Customer customer = customerRepo.findById(id);
         model.addAttribute("customer", customer);
         return "CustomerShow";
+    }
+
+    @GetMapping("/Searchcus")
+    public String CustomerSearch(Model model) {return "CustomerSearch";}
+
+    @PostMapping("/Customer/Search")
+    public String CustomerResult (@RequestParam String name, Model model)
+    {
+        List<Customer> search = customerRepo.findByNameContains(name);
+        model.addAttribute("search", search);
+        return "CustomerSearch";
     }
 }
