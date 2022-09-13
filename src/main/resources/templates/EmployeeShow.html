@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о сотруднике</title>
+</head>
+<body>
+<div th:each="pro:${employee}">
+    <h4>Информация о сотруднике</h4>
+    <p>Имя</p>
+    <p th:text="${pro.name}"></p>
+    <p>Фамилия</p>
+    <p th:text="${pro.surname}"></p>
+    <p>Телефон</p>
+    <p th:text="${pro.number}"></p>
+    <p>Почта</p>
+    <p th:text="${pro.email}"></p>
+<!--    <a th:href="'/Employee/'+${pro.id}+'/edit'">Править</a>-->
+<!--    <form th:action="'/Employee/'+${pro.id}+'/delete'" method="post">-->
+<!--        <button type="submit" class="btn btn-del">Удалить</button>-->
+<!--    </form>-->
+    <a href="/Employee">Вернуться</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Добавить сотрудника</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form action="/Employee/add" method="post" th:each="pro:${employee}" >
+
+  <input th:text="*{pro.name}" type="text" name="name" placeholder="Имя"><br>
+<!--  <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{name}"></div>-->
+
+  <input th:text="*{pro.surname}" type="text" name="surname" placeholder="Фамилия"><br>
+<!--&lt;!&ndash;  <div style="color: red" th:if="${#fields.hasErrors('anons')}" th:errors="*{surname}"></div>&ndash;&gt;-->
+
+  <input th:text="*{pro.number}" type="text" name="number" placeholder="Номер"><br>
+<!--&lt;!&ndash;  <div style="color: red" th:if="${#fields.hasErrors('full_text')}" th:errors="*{number}"></div>&ndash;&gt;-->
+
+  <input th:text="*{pro.email}" type="text" name="email" placeholder="Почта"><br>
+<!--&lt;!&ndash;  <div style="color: red" th:if="${#fields.hasErrors('full_text')}" th:errors="*{email}"></div>&ndash;&gt;-->
+
+  <button type="submit">Добавить сотрудника</button>
+</form>
+</body>
+</html>
