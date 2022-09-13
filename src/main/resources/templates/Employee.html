@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Сотрудники</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<th>Список сотрудников</th>
+<th>Список сотрудников:</th>
 <div th:each="pro:${employee}">
 <!--  <th>Имя</th>-->
 <!--  <p th:text="${pro.name}"/>-->
@@ -15,7 +15,7 @@
 <!--  <th>Телефон</th>-->
 <!--  <p th:text="${pro.number}"/>-->
 <!--  <th>Почта</th>-->
-<!--  <p th:text="${pro.email}"/>-->+
+<!--  <p th:text="${pro.email}"/>-->
   <a th:href="@{/Employee/{id}(id=${pro.getId()})}" th:text="${pro.getName()}">user</a>
 </div>
 <a href="/Employee/add">Добавить сотрудника</a><br>

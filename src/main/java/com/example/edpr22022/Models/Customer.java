@@ -1,17 +1,12 @@
 package com.example.edpr22022.Models;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Date;
 
 @Entity
-public class Employee {
+public class Customer {
     @Id
     @GeneratedValue
     private Long id;
@@ -20,22 +15,14 @@ public class Employee {
     private Date number;
     private String email;
 
-    public Date getNumber() {
-        return number;
+    public Customer() {
     }
 
-    public void setNumber(Date number) {
-        this.number = number;
-    }
-
-    public Employee(String name, String surname, Date number, String email) {
+    public Customer(String name, String surname, Date number, String email) {
         this.name = name;
         this.surname = surname;
         this.number = number;
         this.email = email;
-    }
-
-    public Employee() {
     }
 
     public Long getId() {
@@ -62,6 +49,14 @@ public class Employee {
         this.surname = surname;
     }
 
+    public Date getNumber() {
+        return number;
+    }
+
+    public void setNumber(Date number) {
+        this.number = number;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -69,6 +64,4 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 }

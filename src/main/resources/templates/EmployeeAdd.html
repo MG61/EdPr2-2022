@@ -13,13 +13,14 @@
   <input th:text="*{pro.surname}" type="text" name="surname" placeholder="Фамилия"><br>
 <!--&lt;!&ndash;  <div style="color: red" th:if="${#fields.hasErrors('anons')}" th:errors="*{surname}"></div>&ndash;&gt;-->
 
-  <input th:text="*{pro.number}" type="text" name="number" placeholder="Номер"><br>
+  <input th:text="*{pro.number}" type="date" name="number" placeholder="Дата рождения"><br>
 <!--&lt;!&ndash;  <div style="color: red" th:if="${#fields.hasErrors('full_text')}" th:errors="*{number}"></div>&ndash;&gt;-->
 
-  <input th:text="*{pro.email}" type="text" name="email" placeholder="Почта"><br>
+  <input th:text="*{pro.email}" type="email" name="email" placeholder="Почта"><br>
 <!--&lt;!&ndash;  <div style="color: red" th:if="${#fields.hasErrors('full_text')}" th:errors="*{email}"></div>&ndash;&gt;-->
 
   <button type="submit">Добавить сотрудника</button>
+  <a href="/Employee">Вернуться</a>
 </form>
 </body>
 </html>

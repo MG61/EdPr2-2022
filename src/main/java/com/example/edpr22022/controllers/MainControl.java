@@ -1,6 +1,8 @@
 package com.example.edpr22022.controllers;
 
+import com.example.edpr22022.Models.Customer;
 import com.example.edpr22022.Models.Employee;
+import com.example.edpr22022.repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +21,12 @@ public class MainControl {
     @Autowired
     private EmployeeRepo employeeRepo;
 
+    @Autowired
+    private CustomerRepo customerRepo;
+
 
     @GetMapping("/")
-    public String Home(Model model)
+    public String Home()
     {
         return "Home";
     }
@@ -50,5 +55,32 @@ public class MainControl {
         Employee pcs = employeeRepo.findById(id);
         model.addAttribute("employee", pcs);
         return "EmployeeShow";
+    }
+
+    @GetMapping("/Customer")
+    public String Customer(Model model) {
+        Iterable<Customer> customer = customerRepo.findAll();
+        model.addAttribute("customer",customer);
+        return "Customer";
+    }
+
+    @GetMapping("/Customer/add")
+    public String CustomerAdd(Customer customer, Model model) {return "CustomerAdd";}
+
+    @PostMapping("/Customer/add")
+    public  String AddCustomer(@ModelAttribute("customer") Customer customer
+    ){
+        customerRepo.save(customer);
+        return "Customer";
+    }
+
+    @GetMapping("/Customer/{id}")
+    public String CustomerDetails(
+
+            @PathVariable(value="id") long id, Model model)
+    {
+        Customer pcs = customerRepo.findById(id);
+        model.addAttribute("customer", pcs);
+        return "CustomerShow";
     }
 }
