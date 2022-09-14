@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование сотрудника</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:each="pro : ${employee}">
+    <h1>Редактирование сотрудника</h1>
+    <form method="post" th:each="pro:${employee}">
+        <input type="text" th:value="${employee.getName}" name="name" placeholder="Введите имя"><br>
+        <input type="text" th:value="${employee.getSurname}" name="surname" placeholder="Введите фамилию"><br>
+        <input type="date" th:value="${employee.getNumber}" name="number" ><br>
+        <input type="email" th:value="${employee.getEmail}" name="email" placeholder="xxxxxxxx@xxxxx.xxx"><br>
+        <button type="submit">Сохранить</button><br>
+        <a href="/Employee">Вернуться</a>
+    </form>
+</div>
+</body>
+</html>

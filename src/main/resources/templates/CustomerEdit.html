@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Редактирование покупателя</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:each="pro : ${customer}">
+  <h1>Редактирование покупателя</h1>
+  <form method="post" th:each="pro:${customer}">
+    <input type="text" th:value="${customer.getName}" name="name" placeholder="Введите имя"><br>
+    <input type="text" th:value="${customer.getSurname}" name="surname" placeholder="Введите фамилию"><br>
+    <input type="date" th:value="${customer.getNumber}" name="number" ><br>
+    <input type="email" th:value="${customer.getEmail}" name="email" placeholder="xxxxxxxx@xxxxx.xxx"><br>
+    <button type="submit">Сохранить</button><br>
+    <a href="/Customer">Вернуться</a>
+  </form>
+</div>
+</body>
+</html>

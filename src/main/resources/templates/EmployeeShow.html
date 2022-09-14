@@ -14,11 +14,12 @@
     <p>Дата рождения:</p>
     <p th:text="${pro.number}"></p>
     <p>Почта:</p>
-    <p th:text="${pro.email}"></p>
-<!--    <a th:href="'/Employee/'+${pro.id}+'/edit'">Править</a>-->
-<!--    <form th:action="'/Employee/'+${pro.id}+'/delete'" method="post">-->
-<!--        <button type="submit" class="btn btn-del">Удалить</button>-->
-<!--    </form>-->
+    <p th:text="${pro.email}"></p><br>
+        <a th:href="'/Employee/'+${pro.id}+'/edit'">Изменить</a><br>
+    <form th:action="'/Employee/'+${pro.id}+'/remove'" method="post">
+        <button type="submit" class="btn btn-lg btn-danger">Удалить</button>
+    </form><br><br>
+    <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
     <a href="/Employee">Вернуться</a>
 </div>
 </body>

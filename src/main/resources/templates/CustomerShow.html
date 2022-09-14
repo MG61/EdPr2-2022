@@ -15,10 +15,10 @@
   <p th:text="${pro.number}"></p>
   <p>Почта:</p>
   <p th:text="${pro.email}"></p>
-  <!--    <a th:href="'/Employee/'+${pro.id}+'/edit'">Править</a>-->
-  <!--    <form th:action="'/Employee/'+${pro.id}+'/delete'" method="post">-->
-  <!--        <button type="submit" class="btn btn-del">Удалить</button>-->
-  <!--    </form>-->
+  <a th:href="'/Customer/'+${pro.id}+'/edit'">Изменить</a><br>
+  <form th:action="'/Customer/'+${pro.id}+'/remove'" method="post">
+    <button type="submit" class="btn btn-del">Удалить</button>
+  </form><br>
   <a href="/Customer">Вернуться</a>
 </div>
 </body>
