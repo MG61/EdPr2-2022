@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <head>
     <meta charset="UTF-8">
     <title>Информация о сотруднике</title>
 </head>
 <body>
-<div th:each="pro:${employee}">
-    <h4>Информация о сотруднике:</h4>
-    <p>Имя:</p>
-    <p th:text="${pro.name}"></p>
-    <p>Фамилия:</p>
-    <p th:text="${pro.surname}"></p>
-    <p>Дата рождения:</p>
-    <p th:text="${pro.number}"></p>
-    <p>Почта:</p>
-    <p th:text="${pro.email}"></p><br>
-        <a th:href="'/Employee/'+${pro.id}+'/edit'">Изменить</a><br>
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">MENU</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Дом</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Employee">Сотрудники</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Customer">Покупатели</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div th:each="pro:${employee}" align="center">
+        <h1>
+    <span class="badge text-bg-dark">Информация о сотруднике</span><br>
+        </h1>
+    <h4><span class="badge text-bg-dark" >Имя:</span>
+    <p  th:text="${pro.name}" class="badge text-bg-secondary"/></h4>
+    <h4><span class="badge text-bg-dark" >Фамилия:</span>
+    <p th:text="${pro.surname}" class="badge text-bg-secondary"></p></h4>
+    <h4><span class="badge text-bg-dark" >Дата рождения:</span>
+    <p th:text="${pro.number}" class="badge text-bg-secondary"></p></h4>
+    <h4><span class="badge text-bg-dark" >Почта:</span>
+    <p th:text="${pro.email}" class="badge text-bg-secondary"></p></h4>
+    <a th:href="'/Employee/'+${pro.id}+'/edit'" class="btn btn-success">Изменить</a><br><br>
     <form th:action="'/Employee/'+${pro.id}+'/remove'" method="post">
-        <button type="submit" class="btn btn-lg btn-danger">Удалить</button>
-    </form><br><br>
-    <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-    <a href="/Employee">Вернуться</a>
+        <button type="submit" class="btn btn-lg btn-danger">Удалить</button><br><br>
+    </form>
+    <a href="/Employee" class="btn btn-lg btn-danger">Вернуться</a>
 </div>
 </body>
 </html>
