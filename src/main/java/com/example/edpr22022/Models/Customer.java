@@ -3,6 +3,8 @@ package com.example.edpr22022.Models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 @Entity
@@ -10,7 +12,11 @@ public class Customer {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty(message = "Заполните это поле!")
+    @Size(min = 2, max = 30, message = "От 2 до 30 символов")
     private String name;
+    @NotEmpty(message = "Заполните это поле!")
+    @Size(min = 2, max = 30, message = "От 2 до 30 символов")
     private String surname;
     private Date number;
     private String email;

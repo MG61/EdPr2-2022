@@ -41,8 +41,11 @@ public class MainControl {
     public String EmployeeAdd(Employee employee, Model model) {return "EmployeeAdd";}
 
     @PostMapping("/Employee/add")
-    public  String AddEmployee(@ModelAttribute("employee") Employee employee
+    public  String AddEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult
     ){
+        if(bindingResult.hasErrors()) {
+            return "Employee";
+        }
         employeeRepo.save(employee);
         return "Employee";
     }
@@ -79,9 +82,12 @@ public class MainControl {
         return "EmployeeEdit";
     }
     @PostMapping("/Employee/{id}/edit")
-    public String StudentUpdate(@PathVariable("id")long id, @ModelAttribute("employee") @Valid Employee employee)
+    public String StudentUpdate(@PathVariable("id")long id, @ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult)
     {
         employee.setId(id);
+        if(bindingResult.hasErrors()) {
+            return "Employee";
+        }
         employeeRepo.save(employee);
         return "Employee";
     }
@@ -97,8 +103,11 @@ public class MainControl {
     public String CustomerAdd(Customer customer, Model model) {return "CustomerAdd";}
 
     @PostMapping("/Customer/add")
-    public  String AddCustomer(@ModelAttribute("customer") Customer customer
+    public  String AddCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult
     ){
+        if(bindingResult.hasErrors()) {
+            return "Customer";
+        }
         customerRepo.save(customer);
         return "Customer";
     }
@@ -137,8 +146,11 @@ public class MainControl {
         return "CustomerEdit";
     }
     @PostMapping("/Customer/{id}/edit")
-    public String CustomerUpdate(@PathVariable("id")long id, @ModelAttribute("customer") @Valid Customer customer)
+    public String CustomerUpdate(@PathVariable("id")long id, @ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult)
     {
+        if(bindingResult.hasErrors()) {
+        return "Customer";
+        }
         customer.setId(id);
         customerRepo.save(customer);
         return "Customer";
