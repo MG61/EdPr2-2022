@@ -6,19 +6,12 @@
 </head>
 <body>
 <header th:insert="Blanks/Menu"/>
-<form th:action="${'/person/add/'}" method="post">
-  <select  name="student">
-    <div th:each="element : ${students}">
-      <option th:text="${element.name}"></option>
-    </div>
-  </select>
-  <select  name="universiti">
-    <div th:each="element : ${universities}">
-      <option th:text="${element.name}"></option>
-    </div>
-  </select>
-  <br>
-  <button type="submit">Добавить человека</button>
+<h1>Аниме</h1>
+<a href="/Anime/add">Добавить аниме</a>
+<br>
+<a href="/CategoryAdd">Добавить категорию</a>
+<br>
+<a href="/AnimeAddCategory">Добавить связь</a>
 </form>
 </body>
 </html>

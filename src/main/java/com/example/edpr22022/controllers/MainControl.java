@@ -1,18 +1,12 @@
 package com.example.edpr22022.controllers;
 
-import com.example.edpr22022.Models.Customer;
-import com.example.edpr22022.Models.Employee;
-import com.example.edpr22022.Models.Student;
-import com.example.edpr22022.Models.University;
-import com.example.edpr22022.repo.CustomerRepo;
-import com.example.edpr22022.repo.StudentRepository;
-import com.example.edpr22022.repo.UniversityRepository;
+import com.example.edpr22022.Models.*;
+import com.example.edpr22022.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import com.example.edpr22022.repo.EmployeeRepo;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -29,10 +23,10 @@ public class MainControl {
     private CustomerRepo customerRepo;
 
     @Autowired
-    private StudentRepository studentRepository;
+    private AnimeRepo animeRepo;
 
     @Autowired
-    private UniversityRepository universityRepository;
+    private CategoryRepo categoryRepo;
 
 
     @GetMapping("/")
@@ -170,24 +164,40 @@ public class MainControl {
 
 
     //Связи
-    @GetMapping("/person")
-    private String Main(Model model){
-        Iterable<Student> students = studentRepository.findAll();
-        model.addAttribute("students", students);
-        Iterable<University> universities = universityRepository.findAll();
-        model.addAttribute("universities", universities);
-        return "person";
+     @GetMapping("/Anime")
+    public String Anime(Model model) {
+        Iterable<Anime> anime = animeRepo.findAll();
+        model.addAttribute("anime",anime);
+        return "Anime";
     }
 
-    @PostMapping("/person/add")
-    public String blogPostAdd(@RequestParam String student, @RequestParam String universiti, Model model)
+    @GetMapping("/Anime/add")
+    public String AnimeAdd(Anime anime, Model model) {return "AnimeAdd";}
+
+    @PostMapping("/Anime/add")
+    public  String AddEmployee(@ModelAttribute("anime") @Valid Anime anime){
+        animeRepo.save(anime);
+        return "Anime";
+    }
+
+    @GetMapping("/Anime/add/category")
+    private String AnimeAddCategory(Model model){
+        Iterable<Anime> anime = animeRepo.findAll();
+        model.addAttribute("anime", anime);
+        Iterable<Category> categori = categoryRepo.findAll();
+        model.addAttribute("category", categori);
+        return "AnimeAddCategory";
+    }
+
+    @PostMapping("/Anime/add/category")
+    public String Animeadd(@RequestParam String Anime, @RequestParam String category, Model model)
     {
-        Student student2 = studentRepository.findByName(student);
-        University university2 = universityRepository.findByName(universiti);
-        student2.getUniversities().add(university2);
-        university2.getStudents().add(student2);
-        studentRepository.save(student2);
-        universityRepository.save(university2);
-        return "person";
+        Anime anime2 = animeRepo.findByName(Anime);
+        Category category2 = categoryRepo.findByName(category);
+        anime2.getCategory().add(category2);
+        category2.getAnime().add(anime2);
+        animeRepo.save(anime2);
+        categoryRepo.save(category2);
+        return "Anime";
     }
 }
