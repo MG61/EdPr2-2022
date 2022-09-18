@@ -2,7 +2,11 @@ package com.example.edpr22022.controllers;
 
 import com.example.edpr22022.Models.Customer;
 import com.example.edpr22022.Models.Employee;
+import com.example.edpr22022.Models.Student;
+import com.example.edpr22022.Models.University;
 import com.example.edpr22022.repo.CustomerRepo;
+import com.example.edpr22022.repo.StudentRepository;
+import com.example.edpr22022.repo.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +28,12 @@ public class MainControl {
     @Autowired
     private CustomerRepo customerRepo;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private UniversityRepository universityRepository;
+
 
     @GetMapping("/")
     public String Home()
@@ -37,6 +47,7 @@ public class MainControl {
         model.addAttribute("employee",employee);
         return "Employee";
     }
+
     @GetMapping("/Employee/add")
     public String EmployeeAdd(Employee employee, Model model) {return "EmployeeAdd";}
 
@@ -49,6 +60,7 @@ public class MainControl {
         employeeRepo.save(employee);
         return "Employee";
     }
+
     @GetMapping("/Employee/{id}")
     public String EmployeeDetails(@PathVariable(value="id") long id, Model model)
     {
@@ -154,5 +166,28 @@ public class MainControl {
         customer.setId(id);
         customerRepo.save(customer);
         return "Customer";
+    }
+
+
+    //Связи
+    @GetMapping("/person")
+    private String Main(Model model){
+        Iterable<Student> students = studentRepository.findAll();
+        model.addAttribute("students", students);
+        Iterable<University> universities = universityRepository.findAll();
+        model.addAttribute("universities", universities);
+        return "person";
+    }
+
+    @PostMapping("/person/add")
+    public String blogPostAdd(@RequestParam String student, @RequestParam String universiti, Model model)
+    {
+        Student student2 = studentRepository.findByName(student);
+        University university2 = universityRepository.findByName(universiti);
+        student2.getUniversities().add(university2);
+        university2.getStudents().add(student2);
+        studentRepository.save(student2);
+        universityRepository.save(university2);
+        return "person";
     }
 }

@@ -9,27 +9,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">MENU</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Дом</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Employee">Сотрудники</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Customer">Покупатели</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<header th:insert="Blanks/Menu"/>
 
                 <div align="center">
                     <h1>
@@ -42,8 +22,6 @@
                     <p><a href="/Employee/add" class="btn btn-primary">Добавить сотрудника</a></p>
                     <a href="/Searchemp" class="btn btn-primary">Поиск</a>
                     <a href="/" class="btn btn-danger">Вернуться</a>
-
-
 </div>
 </body>
 </html>

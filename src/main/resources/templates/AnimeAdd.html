@@ -3,24 +3,25 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
 <head>
   <title>Добавить покупателя</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<header th:insert="Blanks/Menu"/>
+<header th:insert="Blanks/Menu"></header>
 <div align="center">
   <h1>
     <span class="badge text-bg-dark" style="margin-bottom: 20px">Добавление покупателя</span>
   </h1>
-<form action="/Customer/add" method="post" th:each="pro:${customer}" >
-  <input th:text="*{pro.name}" type="text" name="name" placeholder="Имя" required style="margin-bottom: 20px"><br>
-  <input th:text="*{pro.surname}" type="text" name="surname" placeholder="Фамилия" required style="margin-bottom: 20px"><br>
-  <input th:text="*{pro.number}" type="date" name="number" placeholder="Дата рождения" required style="margin-bottom: 20px"><br>
-  <input th:text="*{pro.email}" type="email" name="email" placeholder="Почта" required style="margin-bottom: 20px"><br>
-  <button type="submit" class="btn btn-lg btn-success">Добавить покупателя</button><br><br>
-  <a href="/Customer" class="btn btn-lg btn-danger">Вернуться</a>
-</form>
+  <form action="/Customer/add" method="post" th:each="pro:${anime}" >
+    <input th:text="*{pro.name}" type="text" name="name" placeholder="Имя" required style="margin-bottom: 20px"><br>
+    <input th:text="*{pro.surname}" type="text" name="surname" placeholder="Фамилия" required style="margin-bottom: 20px"><br>
+    <input th:text="*{pro.number}" type="date" name="number" placeholder="Дата рождения" required style="margin-bottom: 20px"><br>
+    <input th:text="*{pro.email}" type="email" name="email" placeholder="Почта" required style="margin-bottom: 20px"><br>
+    <button type="submit" class="btn btn-lg btn-success">Добавить покупателя</button><br><br>
+    <a href="/Customer" class="btn btn-lg btn-danger">Вернуться</a>
+  </form>
 </div>
 </form>
 </body>
